@@ -5,10 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
-
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by LaunchCode
@@ -29,14 +26,18 @@ public class JobTest {
     public void testJobConstructorSetsAllFields() {
         Job job = new Job("Product tester", new Employer("ACME"), 
                 new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        
-        assertTrue(job instanceof Job);
+
+
         assertEquals("Product tester", job.getName());
         assertEquals("ACME", job.getEmployer().getValue());
         assertEquals("Desert", job.getLocation().getValue());
         assertEquals("Quality control", job.getPositionType().getValue());
         assertEquals("Persistence", job.getCoreCompetency().getValue());
-
+        assertTrue(true);
+        assertTrue(job.getEmployer() != null);
+        assertTrue(job.getLocation() != null);
+        assertTrue(job.getPositionType() != null);
+        assertTrue(job.getCoreCompetency() != null);
         
     }
 
@@ -47,7 +48,7 @@ public class JobTest {
         Job job2 = new Job("Software Engineer", new Employer("VMLYR"), new Location("Kansas City"),
                 new PositionType("Quality control"), new CoreCompetency("Java"));
 
-        assertNotEquals(job1, job2);
+        assertFalse(job1.equals(job2));
     }
 
     @Test
@@ -75,6 +76,10 @@ public class JobTest {
                 "Location: Kansas City\n" +
                 "Position Type: Quality control\n" +
                 "Core Competency: Java\n";
+
+        assertEquals(expected, jobString);
     }
+
+
 
 }

@@ -17,7 +17,13 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
+    public Job() {
+        id = nextId;
+        nextId++;
+    }
+
     public Job(int id) {
+        this();
         this.id = id;
     }
 
@@ -35,10 +41,14 @@ public class Job {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Job job = (Job) o;
-        return id == job.id;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Job otherJob = (Job) o;
+        return id == otherJob.id;
     }
 
     @Override
@@ -50,7 +60,9 @@ public class Job {
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
-
+    public void setId(int id) {
+        this.id= id;
+    }
     public int getId() {
         return id;
     }
@@ -95,16 +107,27 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-        //to string
-    @Override
-    public String toString() {
-        return "\n" +
-                "ID: " + id + "\n" +
-                "Name: " + getName() + "\n" +
-                "Employer: " + getEmployer() + "\n" +
-                "Location: " + getLocation() + "\n" +
-                "Position Type: " + getPositionType() + "\n" +
-                "Core Competency: " + getCoreCompetency() + "\n";
-    }
+        //to string@Override
+        @Override
+        public String toString() {
+            String nameValue = name.isBlank() ? "Data not available" : name;
+            String employerValue = employer.getValue().isBlank() ? "Data not available" : employer.getValue();
+            String locationValue = location.getValue().isBlank() ? "Data not available" : location.getValue();
+            String positionTypeValue = positionType.getValue().isBlank() ? "Data not available" : positionType.getValue();
+            String coreCompetencyValue = coreCompetency.getValue().isBlank() ? "Data not available" : coreCompetency.getValue();
+
+            if (nameValue.isBlank() && employerValue.isBlank() && locationValue.isBlank() &&
+                    positionTypeValue.isBlank() && coreCompetencyValue.isBlank()) {
+                return "OOPS! This job does not seem to exist.";
+            }
+
+            return "\n" +
+                    "ID: " + id + "\n" +
+                    "Name: " + nameValue + "\n" +
+                    "Employer: " + employerValue + "\n" +
+                    "Location: " + locationValue + "\n" +
+                    "Position Type: " + positionTypeValue + "\n" +
+                    "Core Competency: " + coreCompetencyValue + "\n";
+        }
 }
 
