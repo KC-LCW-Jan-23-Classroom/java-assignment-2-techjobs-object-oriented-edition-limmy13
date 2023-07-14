@@ -57,8 +57,8 @@ public class JobTest {
 
         String jobString = job.toString();
 
-        assertTrue(jobString.startsWith("\n"));
-        assertTrue(jobString.endsWith("\n"));
+        assertEquals("\n", String.valueOf(jobString.charAt(0)));
+        assertEquals("\n", String.valueOf(jobString.charAt(jobString.length() -1)));
     }
 
 }

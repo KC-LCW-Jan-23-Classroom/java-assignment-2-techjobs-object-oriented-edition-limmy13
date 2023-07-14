@@ -97,5 +97,14 @@ public class Job {
 
         //to string
     @Override
+    public String toString() {
+        return "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + getName() + "\n" +
+                "Employer: " + getEmployer() + "\n" +
+                "Location: " + getLocation() + "\n" +
+                "Position Type: " + getPositionType() + "\n" +
+                "Core Competency: " + getCoreCompetency() + "\n";
+    }
 }
 
