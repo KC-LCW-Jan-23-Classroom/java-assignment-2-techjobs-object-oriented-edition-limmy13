@@ -40,5 +40,25 @@ public class JobTest {
         
     }
 
+    @Test
+    public void testJobsForEquality() {
+        Job job1 = new Job("Software Engineer", new Employer("VMLYR"), new Location("Kansas City"),
+                new PositionType("Quality control"), new CoreCompetency("Java"));
+        Job job2 = new Job("Software Engineer", new Employer("VMLYR"), new Location("Kansas City"),
+                new PositionType("Quality control"), new CoreCompetency("Java"));
+
+        assertNotEquals(job1, job2);
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job = new Job("Software Engineer", new Employer("VMLYR"), new Location("Kansas City"),
+                new PositionType("Quality control"), new CoreCompetency("Java"));
+
+        String jobString = job.toString();
+
+        assertTrue(jobString.startsWith("\n"));
+        assertTrue(jobString.endsWith("\n"));
+    }
 
 }
