@@ -61,4 +61,20 @@ public class JobTest {
         assertEquals("\n", String.valueOf(jobString.charAt(jobString.length() -1)));
     }
 
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job = new Job("Software Engineer", new Employer("VMLYR"), new Location("Kansas City"),
+                new PositionType("Quality control"), new CoreCompetency("Java"));
+
+        String jobString = job.toString();
+
+        String expected = "\n" +
+                "ID: " + job.getId() + "\n" +
+                "Name: Software Engineer\n" +
+                "Employer: VMLYR\n" +
+                "Location: Kansas City\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Java\n";
+    }
+
 }
