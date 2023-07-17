@@ -20,6 +20,11 @@ public class Job {
     public Job() {
         id = nextId;
         nextId++;
+//        name = "";
+//        employer = new Employer("");
+//        location = new Location("");
+//        positionType = new PositionType("");
+//        coreCompetency = new CoreCompetency("");
     }
 
     public Job(int id) {
@@ -110,6 +115,9 @@ public class Job {
         //to string@Override
         @Override
         public String toString() {
+
+        // syntax
+            // variable = (condition) ? expressionTrue : expressionFalse;
             String nameValue = name.isBlank() ? "Data not available" : name;
             String employerValue = employer.getValue().isBlank() ? "Data not available" : employer.getValue();
             String locationValue = location.getValue().isBlank() ? "Data not available" : location.getValue();
